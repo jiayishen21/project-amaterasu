@@ -2,7 +2,7 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
-import logo from '../assets/logo.png';
+// import logo from '../assets/logo.png';
 
 function Header() {
   const navigate = useNavigate()

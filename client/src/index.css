@@ -50,10 +50,10 @@ h3 {
   padding-top: 15vh;
 }
 
-.dashboard {
+.page-container {
   width: 100%;
-  text-align: center;
   padding-top: 80px;
+  min-height: 100vh;
 }
 
 .form-container {
@@ -71,7 +71,7 @@ h3 {
   position: absolute;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15%;
+  padding: 0 15vw;
   /*
   background-color: #1b1b1bc0;
   */
@@ -282,5 +282,29 @@ h3 {
 }
 
 .profile-content {
-  background: pink;
+  display: flex;
+  align-items: flex-start;
+  border-bottom: black 3px solid;
+  padding: 3rem 0;
+}
+
+.profile-container {
+  padding: 0 15vw;
+}
+
+.pfp {
+  width: 8rem;
+  margin-right: 4rem;
+}
+
+.profile-component {
+  display: inline-block;
+  font-size: 1.2rem;
+  max-width: 330px;
+  min-width: 175px;
+  margin-right: 5rem;
+}
+
+.profile-component div {
+  margin-bottom: 0.5rem;
 }

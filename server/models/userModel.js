@@ -15,6 +15,28 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please add a password'],
     },
+    color: {
+      type: String,
+      default: "#BAB4FF",
+      required: [true, 'Please add a color'],
+    },
+    pfp: {
+      type: Number,
+      default: 1,
+      required: [true, 'Please add a profile picture'],
+    },
+    sleepGoal:{
+      type: Number,
+      required: false
+    },
+    calorieGoal:{
+      type: Number,
+      required: false
+    },
+    waterGoal:{
+      type: Number,
+      required: false
+    },
   },
   {
     timestamps: true,

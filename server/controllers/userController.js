@@ -38,6 +38,9 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+      color: user.color,
+      pfp: user.pfp,
+      day: 0,
       token: generateToken(user._id),
     })
   } else {
@@ -56,10 +59,18 @@ const loginUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ email })
 
   if (user && (await bcrypt.compare(password, user.password))) {
+    const day = parseInt((new Date() - user.createdAt)/86400000);
+
     res.json({
       _id: user.id,
       name: user.name,
       email: user.email,
+      color: user.color,
+      pfp: user.pfp,
+      day: day,
+      sleepGoal: user.sleepGoal,
+      calorieGoal: user.calorieGoal,
+      waterGoal: user.waterGoal,
       token: generateToken(user._id),
     })
   } else {
