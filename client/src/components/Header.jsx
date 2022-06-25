@@ -15,11 +15,12 @@ function Header() {
     navigate('/')
   }
 
+  //<img src={logo} className="logo"/>
   return (
     <header className='header'>
       <div className='logo'>
         <Link to='/'>
-          <img src={logo} className="logo"/>
+          <p className='logo-title'>Project Amaterasu</p>
         </Link>
       </div>
       <ul>
