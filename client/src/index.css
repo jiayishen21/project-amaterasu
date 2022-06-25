@@ -47,16 +47,13 @@ h3 {
   height: 100vh;
   background-repeat: no-repeat;
   background-size: 100%;
-  padding-top: 10%;
+  padding-top: 15vh;
 }
 
 .dashboard {
   width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 20px;
   text-align: center;
-  padding-top: 10%;
+  padding-top: 80px;
 }
 
 .form-container {
@@ -215,6 +212,12 @@ h3 {
   justify-content: center;
 }
 
+.btn-white {
+  background: white;
+  color: black;
+  border: 0;
+}
+
 .btn svg {
   margin-right: 8px;
 }
@@ -276,4 +279,8 @@ h3 {
   .heading p {
     font-size: 1.5rem;
   }
+}
+
+.profile-content {
+  background: pink;
 }

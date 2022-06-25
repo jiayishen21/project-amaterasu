@@ -38,8 +38,8 @@ function Dashboard() {
   return (
     <>
       <div className='dashboard'>
-        <section className='heading'>
-          <h1>Welcome {user && user.name}</h1>
+        <section className='profile-content'>
+          <div>Welcome {user && user.name}</div>
           <p>Goals Dashboard</p>
         </section>
 
