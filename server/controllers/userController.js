@@ -58,7 +58,7 @@ const updateUser = asyncHandler(async (req, res) => {
     bgColor,
     cardColor,
     name,
-    email,
+    //email,
     //password: hashedPassword,
     sleepGoal,
     calorieGoal,
