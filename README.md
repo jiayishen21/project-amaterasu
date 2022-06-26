@@ -1,3 +1,7 @@
+## Video demonstration
+
+Video demonstration at [https://youtu.be/jKZU5_fRx8A](https://youtu.be/jKZU5_fRx8A)
+
 ## Inspiration
 
 It's finally summer! That means it's time for you (and us) to get back a summer body to impress people at the beach. Project Amaterasu is designed to make the summer fitness grind much easier by tracking the user's goals. Our project was named after Amaterasu, the goddess of the sun in Japanese mythology (this goddess was selected specifically because her name sounds cool).
@@ -34,4 +38,4 @@ Our biggest accomplishment is participating and completing our first (second for
 
 ## What's next for Project Amaterasu
 
-Although Project Amaterasu is usable to a large extent, there are still many features we have not yet implemented. We plan to create features such a goal streaks, profile sharing, and animations (for example filling up water bottle).
+Although Project Amaterasu is useable to a large extent, there are still many features we have not yet implemented. We plan to create features such a goal streaks, profile sharing, and animations (for example filling up water bottle)
