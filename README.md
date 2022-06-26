@@ -2,6 +2,11 @@
 
 Video demonstration at [https://youtu.be/jKZU5_fRx8A](https://youtu.be/jKZU5_fRx8A)
 
+## How to run program
+
+Rename ".envexample" to ".env"
+On terminal, execute "npm i" once in the root folder, once in the client folder
+
 ## Inspiration
 
 It's finally summer! That means it's time for you (and us) to get back a summer body to impress people at the beach. Project Amaterasu is designed to make the summer fitness grind much easier by tracking the user's goals. Our project was named after Amaterasu, the goddess of the sun in Japanese mythology (this goddess was selected specifically because her name sounds cool).
