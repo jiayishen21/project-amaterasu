@@ -15,9 +15,14 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please add a password'],
     },
-    color: {
+    bgColor: {
       type: String,
       default: "#BAB4FF",
+      required: [true, 'Please add a color'],
+    },
+    cardColor: {
+      type: String,
+      default: "#FF9696",
       required: [true, 'Please add a color'],
     },
     pfp: {

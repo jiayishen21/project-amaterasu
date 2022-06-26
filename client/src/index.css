@@ -54,6 +54,9 @@ h3 {
   width: 100%;
   padding-top: 80px;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-container {
@@ -77,10 +80,6 @@ h3 {
   */
   background-color: #2c2c2c;
   height: 80px;
-}
-
-.logo {
-  /* width: 80px; */
 }
 
 .logo-title {
@@ -294,6 +293,7 @@ h3 {
 
 .pfp {
   width: 8rem;
+  margin-left: 2rem;
   margin-right: 4rem;
 }
 
@@ -307,4 +307,66 @@ h3 {
 
 .profile-component div {
   margin-bottom: 0.5rem;
+}
+
+.number-edit {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 3rem 15vw;
+  max-width: 1100px;
+  width: 80vw;
+}
+
+.number-edit div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number-edit div img, span {
+  width: 13rem;
+  height: 13rem;
+  border: black 3px solid;
+}
+
+.number-edit div div {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.color-input {
+  width: 13rem !important;
+}
+
+.pfp-select {
+  width: 13rem;
+  height: 42px;
+  padding: 10px;
+  font-size: 1rem !important;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-family: inherit;
+  display: grid !important;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.pfp-select p {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.arrow {
+  background: none;
+  border: none;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.arrow img {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  border: none !important;
 }

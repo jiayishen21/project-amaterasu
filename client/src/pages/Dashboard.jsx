@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import GoalForm from '../components/GoalForm'
@@ -15,6 +15,12 @@ function Dashboard() {
     (state) => state.goals
   )
 
+  const [bgColor, setBgColor] = useState();
+  const [pfp, setPfp] = useState();
+  const [sleepGoal, setSleepGoal] = useState();
+  const [calorieGoal, setCalorieGoal] = useState();
+  const [waterGoal, setWaterGoal] = useState();
+
   useEffect(() => {
     if (isError) {
       console.log(message)
@@ -26,6 +32,13 @@ function Dashboard() {
 
     dispatch(getGoals())
 
+    if(user) {
+      setBgColor(user.bgColor)
+      setPfp(require(`../assets/pfp/${user.pfp}.png`))
+      setSleepGoal(user.sleepGoal ? `${user.sleepGoal} h` : "none")
+      setCalorieGoal(user.calorieGoal ? `${user.calorieGoal} cal` : "none")
+      setWaterGoal(user.waterGoal ? `${user.waterGoal} mL` : "none")
+    }
     return () => {
       dispatch(reset())
     }
@@ -35,15 +48,9 @@ function Dashboard() {
     return <Spinner />
   }
 
-  const pfp = user ? require(`../assets/pfp/${user.pfp}.png`) : null;
-
-  const sleepGoal = user ? (user.sleepGoal ? `${user.sleepGoal} h` : "none") : null
-  const calorieGoal = user ? (user.calorieGoal ? `${user.calorieGoal} cal` : "none") : null
-  const waterGoal = user ? (user.waterGoal ? `${user.waterGoal} mL` : "none") : null
-
   return (
     <>
-      <div className='page-container' style={{backgroundColor: user && user.color}}>
+      <div className='page-container' style={{backgroundColor: bgColor}}>
         <section className='profile-container'>
           <div className='profile-content'>
             <img src={pfp} className="pfp" />
