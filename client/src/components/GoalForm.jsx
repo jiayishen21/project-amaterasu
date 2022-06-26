@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createGoal } from '../features/goals/goalSlice'
+import goal from '../assets/goal.png'
 
 function GoalForm() {
   const [text, setText] = useState('')
@@ -15,10 +16,13 @@ function GoalForm() {
   }
 
   return (
-    <section className='form'>
+    <>
       <form onSubmit={onSubmit}>
         <div className='form-group'>
-          <label htmlFor='text'>Goal</label>
+          <div className="form-title">
+            <label htmlFor='text'>Daily Goal</label>
+            <img src={goal} />
+          </div>
           <input
             type='text'
             name='text'
@@ -33,7 +37,7 @@ function GoalForm() {
           </button>
         </div>
       </form>
-    </section>
+    </>
   )
 }
 

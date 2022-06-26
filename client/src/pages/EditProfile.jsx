@@ -1,15 +1,33 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useNavigate, Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { update, reset } from '../features/auth/authSlice'
 import left from '../assets/left.png'
 import right from '../assets/right.png'
+import { toast } from 'react-toastify'
+import Spinner from '../components/Spinner'
 
 function EditProfile() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+
+    if (isSuccess) {
+      navigate('/')
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
 
 	const totalPfps = 6
-
-  const { user } = useSelector((state) => state.auth)
 
 	const [pfpNum, setPfpNum] = useState()
 	const [pfp, setPfp] = useState()
@@ -26,6 +44,8 @@ function EditProfile() {
 		calorieGoal: '',
 		waterGoal: ''
   })
+
+	const {name, email, password, sleepGoal, calorieGoal, waterGoal} = formData
 
   useEffect(() => {
     if (!user) {
@@ -111,8 +131,38 @@ function EditProfile() {
 	}
 
 	const revertLastCardColor = () => {
-		setBgColor(lastCardColor)
+		setCardColor(lastCardColor)
 	}
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    const userData = {
+			pfp: pfpNum,
+			bgColor: lastBgColor,
+			cardColor: lastCardColor,
+			name: name ? name : user.name,
+			oldEmail: user.email,
+      email: email ? email : user.email,
+      password: password ? password : user.password,
+			sleepGoal: sleepGoal === '' ? undefined : sleepGoal,
+			calorieGoal: calorieGoal === '' ? undefined : calorieGoal,
+			waterGoal: waterGoal === '' ? undefined : waterGoal,
+    }
+
+  	dispatch(update(userData))
+  }
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <>
@@ -120,7 +170,7 @@ function EditProfile() {
 				<section className='number-edit'>
 					<div>
 						<img src={pfp} />
-						<div>Select profile picture</div>
+						<div>Profile picture</div>
 						<div className='pfp-select'>
 							<button className='arrow' onClick={onLeft}>
 								<img src={left} />
@@ -134,7 +184,7 @@ function EditProfile() {
 					</div>
 					<div>
 						<span style={{background: lastBgColor}} />
-						<div>Select background color</div>
+						<div>Background</div>
 						<div className='form-group'>
 							<input
 								type="text"
@@ -150,7 +200,7 @@ function EditProfile() {
 					</div>
 					<div>
 						<span style={{background: lastCardColor}} />
-						<div>Select card color</div>
+						<div>Card color</div>
 						<div className='form-group'>
 							<input
 								type="text"
@@ -164,6 +214,96 @@ function EditProfile() {
 						</div>
 						<button className='btn color-input' onClick={randomCardColor}>Randomize</button>
 					</div>
+				</section>
+
+				<section className='user-info-container'>
+					<h2>Leave user data fields empty to leave as original</h2>
+					<form className='user-info-form' onSubmit={onSubmit}>
+						<div className='column'>
+							<div className='form-group'>
+								<input
+								  type='text'
+                  className='form-control'
+                  id='new-name'
+                  name='name'
+                  value={name}
+									placeholder='Enter new name'
+									onChange={onChange}
+								/>
+							</div>
+							<div className='form-group'>
+								<input
+								  type='email'
+                  className='form-control'
+                  id='new-email'
+                  name='email'
+                  value={email}
+									placeholder='Enter new email'
+									onChange={onChange}
+								/>
+							</div>
+							<div className='form-group'>
+								<input
+								  type='password'
+                  className='form-control'
+                  id='new-password'
+                  name='password'
+                  value={password}
+									placeholder='Enter new password'
+									onChange={onChange}
+								/>
+							</div>
+						</div>
+
+						<div className='column'>
+							<div className='form-group'>
+								<input
+								  type='number'
+                  className='form-control'
+                  id='new-sleep'
+                  name='sleepGoal'
+                  value={sleepGoal}
+									placeholder='Enter new daily sleep goal'
+									onChange={onChange}
+								/>
+							</div>
+							<div className='form-group'>
+								<input
+								  type='number'
+                  className='form-control'
+                  id='new-calorie'
+                  name='calorieGoal'
+                  value={calorieGoal}
+									placeholder='Enter new daily calorie goal'
+									onChange={onChange}
+								/>
+							</div>
+							<div className='form-group'>
+								<input
+								  type='number'
+                  className='form-control'
+                  id='new-water'
+                  name='waterGoal'
+                  value={waterGoal}
+									placeholder='Enter new daily water goal'
+									onChange={onChange}
+								/>
+							</div>
+						</div>
+
+						<div className='form-group'>
+							<button type='submit' className='btn btn-block'>
+								Save preferences
+							</button>
+						</div>
+						<div className='form-group'>
+							<Link to="/">
+								<button className='btn btn-block'>
+									Discard changes
+								</button>
+							</Link>
+						</div>
+					</form>
 				</section>
 			</div>
     </>
