@@ -32,15 +32,18 @@ const userSchema = mongoose.Schema(
     },
     sleepGoal:{
       type: Number,
-      required: false
+      default: 0,
+      required: [true, 'Please add a goal'],
     },
     calorieGoal:{
       type: Number,
-      required: false
+      default: 0,
+      required: [true, 'Please add a goal'],
     },
     waterGoal:{
       type: Number,
-      required: false
+      default: 0,
+      required: [true, 'Please add a goal'],
     },
   },
   {
